@@ -69,7 +69,7 @@ function sessionCallback(oauthResponse) {
     } else {
         client.setSessionToken(oauthResponse.access_token, null, oauthResponse.instance_url);
 		console.log("init backbone");
-		$.mobile.changePage( "#" , { reverse: false, changeHash: true } );
+		window.location.href = window.location.href.split('#')[0]+'#';
 		myapp(client);
  
     }
@@ -215,7 +215,7 @@ function getAuthCredentialsError(error) {
     function myapp(client) {
       console.log(client);
       Backbone.Force.initialize(client);
-
+	  
       var app = {}; // create namespace for our app
 	  	console.log("backbone started");
 	
@@ -362,7 +362,8 @@ function getAuthCredentialsError(error) {
       app.Router = Backbone.Router.extend({ 
         routes: {
           "": "contacts",
-          "new": "newContact",
+          "#": "contacts",
+		  "new": "newContact",
           ":id": "contact"
         },          
         contacts: function() {
@@ -403,7 +404,7 @@ function getAuthCredentialsError(error) {
         }
       });
 	
-   	 app.router = new app.Router();
+   	  app.router = new app.Router();
 		console.log("contact router init end");
       Backbone.history.start();
 		console.log("backbone end");
