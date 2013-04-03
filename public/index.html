@@ -69,6 +69,7 @@ function sessionCallback(oauthResponse) {
     } else {
         client.setSessionToken(oauthResponse.access_token, null, oauthResponse.instance_url);
 		console.log("init backbone");
+		$.mobile.changePage( "#" , { reverse: false, changeHash: true } );
 		myapp(client);
  
     }
