@@ -25,11 +25,7 @@ var clientId    = '3MVG9A2kN3Bn17htFsz.Zr8IKNBFJ8lWiyDw0AgEoh0_jygEvcfugygyW5NU7
 var redirectUri = 'https://forcebacknodedemo.herokuapp.com/index.html';
 var proxyUrl    = 'https://forcebacknodedemo.herokuapp.com/proxy/';
 
-// We'll get an instance of the REST API client in a callback after we do 
-// OAuth
 var client = new forcetk.Client(clientId, loginUrl, proxyUrl);
-
-
 
 $(document).ready(function() {
     //Add event listeners and so forth here
@@ -371,7 +367,7 @@ function getAuthCredentialsError(error) {
         contacts: function() {
           var contactsCollection = new app.ContactsCollection();
 		  console.log("collection begin");	
-          $.mobile.loading( "show", { text: 'Loading Contacts', textVisible: true } );
+     //     $.mobile.loading( "show", { text: 'Loading Contacts', textVisible: true } );
           console.log("collection search");
           contactsCollection.fetch({success: function(){
             console.log("collection found");
