@@ -73,11 +73,9 @@ function sessionCallback(oauthResponse) {
         });
     } else {
         client.setSessionToken(oauthResponse.access_token, null, oauthResponse.instance_url);
-
 		console.log("init backbone");
 		myapp(client);
-			
-		}); 
+ 
     }
 }
 
