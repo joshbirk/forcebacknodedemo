@@ -359,7 +359,9 @@ function getAuthCredentialsError(error) {
 			console.log("contact router init begin");				
       //Define the Application Router
       app.Router = Backbone.Router.extend({ 
-        routes: {
+        console.log("router begin");	
+		
+		routes: {
           "": "contacts",
           "new": "newContact",
           ":id": "contact"
@@ -367,7 +369,7 @@ function getAuthCredentialsError(error) {
         contacts: function() {
           var contactsCollection = new app.ContactsCollection();
 		  console.log("collection begin");	
-     //     $.mobile.loading( "show", { text: 'Loading Contacts', textVisible: true } );
+          $.mobile.loading( "show", { text: 'Loading Contacts', textVisible: true } );
           console.log("collection search");
           contactsCollection.fetch({success: function(){
             console.log("collection found");
@@ -382,7 +384,8 @@ function getAuthCredentialsError(error) {
 		
         },
         contact: function(id) {
-          var contact = new app.Contact({Id: id});
+          console.log("contact read begin");	
+		  var contact = new app.Contact({Id: id});
           $.mobile.loading( "show", { text: 'Loading Contact', textVisible: true } );
           contact.fetch({success: function(){
             $.mobile.loading( "hide" );
@@ -392,7 +395,8 @@ function getAuthCredentialsError(error) {
           }});
         },
         newContact: function(id) {
-          var contact = new app.Contact();
+          console.log("new contact begin");	
+		  var contact = new app.Contact();
           $("#contact-content").empty();
           $("#contact-content").html(new app.ContactDetailView({model: contact}).el);
           $("#contact-content").trigger( 'create' );
