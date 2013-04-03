@@ -359,9 +359,7 @@ function getAuthCredentialsError(error) {
 			console.log("contact router init begin");				
       //Define the Application Router
       app.Router = Backbone.Router.extend({ 
-        console.log("router begin");	
-		
-		routes: {
+        routes: {
           "": "contacts",
           "new": "newContact",
           ":id": "contact"
