@@ -26,6 +26,14 @@ app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
+app.get('/', function(req, res) {
+  res.render('index', { client_id: client_id });
+});
+
+app.get('/index.html', function(req, res) {
+  res.render('index', { client_id: client_id });
+});
+
 app.all('/proxy/?*', function (req, res) {
     log(req);
     var body = req.body;
