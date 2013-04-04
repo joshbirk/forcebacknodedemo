@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-var client_id = process.env.client_id;
 var express = require('express')
     , http = require('http')
     , path = require('path')
@@ -16,7 +15,8 @@ var app = express();
 
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
-    app.use(express.favicon());
+    app.set('view engine', 'ejs');
+	app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.static(APP_RELATIVE_PATH));
@@ -27,11 +27,11 @@ app.configure('development', function () {
 });
 
 app.get('/', function(req, res) {
-  res.render('index', { client_id: client_id});
+  res.render('index', { client_id: process.env.client_id});
 });
 
 app.get('/index.html', function(req, res) {
-  res.render('index', { client_id: client_id });
+  res.render('index', { client_id: process.env.client_id });
 });
 
 app.all('/proxy/?*', function (req, res) {
