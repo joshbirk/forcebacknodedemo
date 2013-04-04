@@ -9,6 +9,10 @@ var express = require('express')
     , path = require('path')
     , request = require('request');
 
+var ejs = require('ejs'); 
+ejs.open = '{{'; 
+ejs.close = '}}';
+
 //SET APP_RELATIVE_PATH to a folder where your app's index.html resides.
  var APP_RELATIVE_PATH = path.join(__dirname, '/public/');
  console.log(APP_RELATIVE_PATH);
