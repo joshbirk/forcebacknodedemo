@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-
+var client_id = process.env.client_id;
 var express = require('express')
     , http = require('http')
     , path = require('path')
@@ -27,11 +27,11 @@ app.configure('development', function () {
 });
 
 app.get('/', function(req, res) {
-  res.render('index', { client_id: process.env.client_id });
+  res.render('index', { client_id: client_id});
 });
 
 app.get('/index.html', function(req, res) {
-  res.render('index', { client_id: process.env.client_id });
+  res.render('index', { client_id: client_id });
 });
 
 app.all('/proxy/?*', function (req, res) {
